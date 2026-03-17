@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { supabase } from "../lib/supabase";
 
+// Componente de registro de usuario
 export default function Register() {
 
+  // Estados locales para input de email y contraseña
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Función que maneja el registro con Supabase
   const handleRegister = async () => {
     const { error } = await supabase.auth.signUp({
       email,
@@ -13,8 +16,10 @@ export default function Register() {
     });
 
     if (error) {
+      // Mostrar alerta al usuario si hay error al registrar
       alert(error.message);
     } else {
+      // Confirmación de registro exitoso
       alert("Usuario registrado");
     }
   };
@@ -22,6 +27,7 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-gray-100">
 
+      {/* Encabezado visual */}
       <header className="bg-gradient-to-r from-blue-600 to-blue-500 text-white py-8 text-center">
         <h1 className="text-3xl font-bold">⚡ ViralHook</h1>
         <p className="text-sm opacity-90">
@@ -34,6 +40,7 @@ export default function Register() {
 
           <h2 className="text-2xl text-center mb-8">Regístrate</h2>
 
+          {/* Campo de correo electrónico */}
           <div className="mb-6">
             <label className="block mb-2 text-sm">Correo Electrónico</label>
             <input
@@ -44,6 +51,7 @@ export default function Register() {
             />
           </div>
 
+          {/* Campo de contraseña */}
           <div className="mb-6">
             <label className="block mb-2 text-sm">Contraseña</label>
             <input
@@ -54,11 +62,13 @@ export default function Register() {
             />
           </div>
 
+          {/* Checkbox de términos */}
           <div className="flex items-center gap-2 mb-8 text-sm">
             <input type="checkbox" />
             <span>Acepto Términos y Condiciones</span>
           </div>
 
+          {/* Botón de registro */}
           <button
             onClick={handleRegister}
             className="w-full bg-blue-600 text-white py-3 font-semibold"
