@@ -1,0 +1,1 @@
+// Funciones globales de ayuda para texto
